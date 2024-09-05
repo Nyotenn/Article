@@ -95,7 +95,59 @@ UniDoc是一个可以同时做文本检测、文本识别和文档理解的多�
 
 在微调阶段，解冻所有模型。
 
-## 六、mPLUG-DocOwl
+## 六、CogVLM
+
+![img](./assets/v2-1458cb01012c0f1b60ec5c7b48246ac0_1440w.webp)
+
+整体结构在LLaVA的基础上在大语言模型中每层都添加了一个可训练的视觉专家模块（右图），以实现图像特征和文本特征的深度对齐，而不会牺牲任何NLP任务的性能。只有紫色部分是可训练的。
+
+**训练**
+
+训练和LLaVA同样分为两个阶段：
+第一阶段：预训练阶段；使用了数据集LAION-2B和COYO-700M，加上4M的视觉定位数据集（LAION-400M的子集）。预训练阶段也分为两个训练任务（文本下一个Token预测和REC任务）。REC任务是指给我图片中目标的标书，预测Bounding Box的任务。在这个阶段**冻结了VIT和语言模型原本的参数**，可训练的参数为6.5B。
+
+第二阶段：微调；数据来源于LLaVA-Instruct（GPT4生成，手动纠正了该数据集中的错误）、LRV-Instruction、LLaVAR和内部数据集。在该阶段，除了ViT Encoder，其它参数都是可训练的。
+
+## 七、CogAgent
+
+![img](./assets/v2-29f017f770d7b9672043373dbf4bfa22_1440w.webp)
+
+在CogVLM的基础上添加了一个高分辨率的图片编码器模块（High-resolution image feature），解决了CogVLM对高分辨图片支持弱的问题, 可以集成到各种视觉语言模型架构中。
+
+**训练**
+
+- 预训练阶段
+
+  训练主要分为三个任务：**文本识别、视觉定位和GUI图像理解**（指网页等GUI图像的理解能力）。
+
+  - **文本识别**任务数据集主要来自合成的文本图像(80M)、自然图像OCR(18M)、学术文档（9M、arXiv）。
+  - **视觉定位**数据集：LAION-115M中得到的40M数据, 一个图像+对应的描述 比如A bluebird [[302,413,640,752]]sitting on abranch coffee mugs [[279,588,677,804]]。
+  - **GUI图像理解：**GUI指代表达生成、GUI指代表达理解**。**
+
+  预训练也分为两个阶段，第一阶段只训练新添加的High-Resolution Cross-Module（参数约为646M）；第二阶段训练High-Resolution Cross-Module和视觉专家模块。在预训练阶段会根据任务的难度按照递增的顺序进行训练，可以令模型收敛快并且训练稳定。
+
+- 微调阶段
+
+  数据集包含多个公开的视觉问答数据集、Mind2Web、AITW等。
+
+  在这个阶段所有模型均可以参与微调。
+
+## 八、mPlug-Owl
+
+> Arxiv：[https://arxiv.org/abs/2304.1417](https://arxiv.org/abs/2304.1417)
+
+<img src="./assets/v2-28961c3d65f7e38a6994418c997348ce_1440w.webp" alt="img" style="zoom:80%;" />
+
+mPLUG-Owl的模型结构如上图所示，输入一张图片，经过一个Visual Encoder(对图像编码)和Visual Abstractor（将较长的、细粒度的图像特征概括为少量可学习的 Token，实现对视觉信息的高效建模) ，然后生成的视觉 Token和文本查询送到大语言模型获取输出。
+
+**训练**
+
+- 第一阶段：使用多模态数据训练视觉模块（冻结语言模块），可以让视觉特征贴合语言特征。
+- 第二阶段：使用多模态和单模态数据联合调整语言模块的LoRA参数，冻结视觉模块。模型可以学习多样化的单模态和多模态指令，同时具备单模态和多模态多轮对话能力。
+
+不同于LLaVA，mPLUG-Owl使用类似Blip中的Q-Former结构进行视觉特征提取，提取到的特征的维度同Query的维度相同（维度太小），会造成信息损失。
+
+## 九、mPLUG-DocOwl
 
 已有的多模态大模型在未经领域训练的情况下，往往会忽略细粒度的`OCR 特征`，例如复杂的表格、或是大的文本块等。
 
@@ -105,8 +157,10 @@ mPLUG-DocOwl是在mPLUG-Owl基础上，基于统一的instruction tuning，来�
 
 <img src="./assets/image-20240801095429460.png" alt="image-20240801095429460" style="zoom:80%;" />
 
-mPLUG-DocOwl 基于多模态大模型`mPLUGOwl`，其包含三个部分：
+**训练**
 
-- `pre-trained visual foundation model`：提取视觉特征
-- `visual abstractor`：使用一组可学习的 token 提取这些特征
-- `language foundation model`：输入拼接后的视觉特征和文本特征，输出响应
+mPLUG-DocOwl收集了具有不同任务格式的各种文档理解数据集，包括**视觉问答（VQA），信息提取（IE），自然语言推理（NLI）和图像字幕（IC）**。mPLUG-Owl 以统一格式执行指令调优，即“Human：{question} AI：{answer}”。通过替换 {question} 和 {answer} 占位符，将不同的文档理解任务转换为与 mPLUG-Owl 相同的格式。
+
+- **第一阶段：**初始化于mPLUG-Owl，为了增强模型的文字理解能力，mPLUG-DocOwl第一阶段只采用新构建的带文字图片相关的指令数据集进行微调，训练结构包括visual abstractor和LLM中的LoRA。
+- **第二阶段**：为了保持Owl的开放域图文理解以及指令理解能力，mPLUG-DocOwl第二阶段进一步添加Owl的指令微调数据进行混合训练，只训练LLM中的LoRA。
+- 
