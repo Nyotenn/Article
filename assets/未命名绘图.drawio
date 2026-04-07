@@ -1,0 +1,101 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="第 1 页" id="p6T4SKn41rC5LEp8LGSB">
+    <mxGraphModel dx="1414" dy="743" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-16" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="开始" vertex="1">
+          <mxGeometry height="40" width="70" x="350" y="20" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-17" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-5" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;color: rgb(255, 255, 255); font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;分别计算两选票图像的重要性分数&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="247.5" x="262.5" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-18" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-6" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;分别根据重要性分数对令牌索引进行降序排序&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="247.5" x="262.5" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-19" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-7" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;根据预设的重要令牌数量阈值N，将前N个令牌划分为重要令牌，后256-N个令牌为非重要令牌，并形成相应的掩码矩阵&lt;/span&gt;" vertex="1">
+          <mxGeometry height="90" width="247.5" x="262.5" y="220" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-20" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-21" connectable="0" parent="pVmIqudIZVmzpEmIvvDW-20" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="是" vertex="1">
+          <mxGeometry relative="1" x="-0.1116" y="-3" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-22" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-23" connectable="0" parent="pVmIqudIZVmzpEmIvvDW-22" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="否" vertex="1">
+          <mxGeometry relative="1" x="-0.368" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-8" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" value="&lt;span style=&quot;color: rgb(33, 41, 48); font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;两图掩码矩阵中不一致的元素数量高于阈值？&lt;/span&gt;" vertex="1">
+          <mxGeometry height="80" width="306.25" x="231.88" y="340" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-27" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-9" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;判定为非法选票&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="117.5" x="145" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-24" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-10" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;将两图输入至基于图像相似度比对的选票非法填涂检测模型处理&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="197.5" x="497.5" y="430" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-25" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-13">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="460" y="580" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-30" connectable="0" parent="pVmIqudIZVmzpEmIvvDW-25" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="是" vertex="1">
+          <mxGeometry relative="1" x="-0.4107" y="-1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-26" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" target="pVmIqudIZVmzpEmIvvDW-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-31" connectable="0" parent="pVmIqudIZVmzpEmIvvDW-26" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" value="否" vertex="1">
+          <mxGeometry relative="1" x="-0.2152" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-12" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=#f0a30a;fontColor=#000000;strokeColor=#BD7000;" value="&lt;span style=&quot;color: rgb(33, 41, 48); font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;相似度高于阈值？&lt;/span&gt;" vertex="1">
+          <mxGeometry height="50" width="219.38" x="486.56" y="510" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-28" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-13" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;判定为合法选票&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="400" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-29" edge="1" parent="1" source="pVmIqudIZVmzpEmIvvDW-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="pVmIqudIZVmzpEmIvvDW-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-14" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="&lt;span style=&quot;font-family: &amp;quot;Microsoft YaHei&amp;quot;, 微软雅黑, Arial; font-size: 13px; background-color: rgba(255, 255, 255, 0.01);&quot;&gt;判定为非法选票&lt;/span&gt;" vertex="1">
+          <mxGeometry height="40" width="120" x="680" y="585" as="geometry" />
+        </mxCell>
+        <mxCell id="pVmIqudIZVmzpEmIvvDW-15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=#1ba1e2;strokeColor=#006EAF;fontColor=#ffffff;" value="结束" vertex="1">
+          <mxGeometry height="40" width="70" x="351.25" y="690" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
